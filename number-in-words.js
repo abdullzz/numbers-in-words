@@ -1,4 +1,28 @@
 function inWords(num) {
+  let result = toWords(num);
+  function toWords(num) {
+    let lib = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan', 'sepuluh', 'sebelas'];
+    let ref = [[10, ' puluh '], [100, ' ratus '], [1000, ' ribu '], [1000000, ' juta '], [1000000000, ' milyar '], [1000000000000, ' triliun '], [1000000000000000, ' ribu triliun ']];
+    if (num === 0) {
+      return '';
+    }
+    if (num < 12) {
+      return lib[num];
+    } else if (num < 20) {
+      return lib[num % 10] + ' belas';
+    } else {
+      for (let i = 0; i < ref.length; i++) {
+        if (num < ref[i][0]) {
+          return inWords(Math.floor(num / ref[i-1][0])) + ref[i-1][1] + inWords(num % ref[i-1][0]);
+        }
+      }
+    }
+  }
+  return result.replace(/\s\s+/g, ' ').replace(/satu /g, 'se');
+}
+
+/*
+function inWords(num) {
   var lib = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan', 'sepuluh', 'sebelas'];
   if (num === 0) {
     return '';
@@ -31,6 +55,7 @@ function inWords(num) {
     return inWords(Math.floor(num / 1000000000000)) + ' triliun ' + inWords(num % 1000000000000);  
   }
 }
+*/
 
 console.log(inWords(2000));
 console.log(inWords(111111111111111));
