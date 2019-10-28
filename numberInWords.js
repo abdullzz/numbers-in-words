@@ -1,5 +1,5 @@
 function numberInWords(number) {
-    const fix = {
+    const fixed =  {
         0: '',
         1: 'satu',
         2: 'dua',
@@ -14,21 +14,21 @@ function numberInWords(number) {
         11: 'sebelas'
     }
     if(number < 12) {
-        return fix[number]
+        return fixed[number]
     }
     if(number < 20) {
-        return fix[number%10] + ' belas'
+        return fixed[number%10] + ' belas '
     }
     if(number < 100) {
-        return fix[Math.floor(number/10)] + ' puluh ' + fix[number%10]
+        return fixed[Math.floor(number/10)] + ' puluh ' + fixed[number%10]
     }
     if(number < 200) {
-        return 'Seratus ' + numberInWords(number%100)
+        return 'seratus ' + numberInWords(number%100)
     }
-    if (number < 1000) {
-        return fix[Math.floor(number/100)] + ' ratus ' + numberInWords(number%100)
+    if(number < 1000) {
+        return fixed[Math.floor(number/100)] + ' ratus ' + numberInWords(number%100)
     }
-    if (number < 2000) {
+    if(number < 2000) {
         return 'seribu ' + numberInWords(number%1000)
     }
     if (number < 1000000) {
@@ -40,9 +40,12 @@ function numberInWords(number) {
     if(number < 1000000000000) {
         return numberInWords(Math.floor(number/1000000000)) + ' miliar ' + numberInWords(number%1000000000)
     }
-    if(number < 1000000000000000) {
-        return numberInWords(Math.floor(number/1000000000000)) + ' trilion ' + numberInWords(number%1000000000000)
-    }
 }
 
-console.log(numberInWords(122039320))
+// console.log(numberInWords(process.argv[2]))
+console.log(numberInWords(4))
+console.log(numberInWords(27))
+console.log(numberInWords(102))
+console.log(numberInWords(38079))
+console.log(numberInWords(82102713))
+console.log(numberInWords(999999999999999))
