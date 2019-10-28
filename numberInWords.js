@@ -23,7 +23,13 @@ function cariRatusan(num) {
         }
         else if (str.length === 2) {
             if (numPertama === 1) {
-                return ' sebelas'
+                if (Number(str[1]) === 1) {
+                    return ' sebelas '
+                }
+                else if (Number(str[1]) === 0) {
+                    return ' sepuluh '
+                }
+                return cariNumber(Number(str[1])) + ' belas '
             }
             result += cariNumber(numPertama) + ' puluh '
         }
@@ -38,7 +44,7 @@ function cariRatusan(num) {
     }
 }
 
-function rekrusif(arr) {
+function cariDiatasratusan(arr) {
     if (arr.length === 1) {
         return cariRatusan(Number(arr[0]))
     } else {
@@ -56,7 +62,7 @@ function rekrusif(arr) {
         else if (arr.length === 2) {
             batas = ' ribu '
         }
-        return temp + batas + rekrusif(arr.slice(1))
+        return temp + batas + cariDiatasratusan(arr.slice(1))
     }
 }
 
@@ -76,7 +82,8 @@ function in_words(num) {
             count++
         }
         let result = uang.join('').split('.')
-        return rekrusif(result)
+
+        return cariDiatasratusan(result)
     }
 }
 
@@ -85,7 +92,7 @@ function in_words(num) {
 console.log(in_words(111222333444555))
 
 
-console.log(in_words(4))
+console.log(in_words(999))
 // empat
 console.log(in_words(27))
 // dua puluh tujuh
