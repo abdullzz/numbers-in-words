@@ -40,6 +40,9 @@ function numberInWords(number) {
     if(number < 1000000000000) {
         return numberInWords(Math.floor(number/1000000000)) + ' miliar ' + numberInWords(number%1000000000)
     }
+    if(number < 1000000000000000) {
+        return numberInWords(Math.floor(number/1000000000000)) + ' trilion ' + numberInWords(number%1000000000000)
+    }
 }
 
 // console.log(numberInWords(process.argv[2]))
