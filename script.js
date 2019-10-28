@@ -56,7 +56,7 @@ function convertToString (number) {
   if (number.multiplier === 11) {
     return references[number.multiplier] + references[number.devidedBy]
   } else if (number.multiplier >= 10) {
-    return devider(number.multiplier).reduce((a, num) => a += convertToString(num) + ' ', '') + references[number.devidedBy]
+    return in_words(number.multiplier) + references[number.devidedBy]
   } else {
     if (number.multiplier === 1) {
       if (number.number >= 11 && number.number <= 19) {
