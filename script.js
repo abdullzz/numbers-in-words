@@ -73,18 +73,18 @@ function convertToString (number) {
 
 }
 
-function convertNumber (number) {
+function in_words (number) {
   return devider(number).reduce((a, num) => a += convertToString(num) + ' ', '')
 }
 
-console.log(convertNumber(111))
-console.log(convertNumber(102))
-console.log(convertNumber(999))
-console.log(convertNumber(123))
-console.log(convertNumber(1234))
-console.log(convertNumber(12345))
-console.log(convertNumber(12))
-console.log(convertNumber(123456))
-console.log(convertNumber(38079))
-console.log(convertNumber(82102713))
-console.log(convertNumber(12345678900000))
+console.log(in_words(111))
+console.log(in_words(102))
+console.log(in_words(999))
+console.log(in_words(123))
+console.log(in_words(1234))
+console.log(in_words(12345))
+console.log(in_words(12))
+console.log(in_words(123456))
+console.log(in_words(38079))
+console.log(in_words(82102713))
+console.log(in_words(12345678900000))
