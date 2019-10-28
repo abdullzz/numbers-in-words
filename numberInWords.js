@@ -11,41 +11,46 @@ function in_words(num) {
     9: "sembilan",
     10: "sepuluh",
     11: "sebelas",
-    20: "dua puluh",
-    30: "tiga puluh",
-    40: "empat puluh",
-    50: "lima puluh",
-    60: "enam puluh",
-    70: "tujuh puluh",
-    80: "delapan puluh",
-    90: "sembilan puluh",
     100: "seratus",
     1000: "seribu"
   }
 
-  let bilangan = ""
+  let over = ""
 
   if (num === 0){
     return "" // base case if num equal to zero return empty string
   } else {
-    console.log(num)
     if (num < 12) {
-      bilangan += objBilangan[num % 10]
-      num = 0;
-    }
-
-    
-      return bilangan + in_words(num)
-    }
+      return objBilangan[num % 10] + in_words(0)
+    } else if (num < 20) {
+      return objBilangan[num % 10] + " belas" + in_words(0)
+    } else if (num < 100) {
+      return objBilangan[Math.floor(num / 10)] + " puluh " + in_words(Math.floor(num % 10))
+    } else if (num === 100) {
+      return objBilangan[num] + in_words(0)
+    } else if (num < 200) {
+      return "seratus " + in_words(num % 100)
+    } else if (num < 1000 ) {
+      return objBilangan[Math.floor(num / 100)] + " ratus " + in_words(num % 100)
+    } else if (num === 1000) {
+      return objBilangan[num] + in_words(0) 
+    } else if (num < 2000) {
+      return objBilangan[1000] + " " + in_words(num % 1000)
+    } 
+  }
 }
 
 console.log(in_words(4))
-// console.log(in_words(17))
-// console.log(in_words(19))
-// console.log(in_words(27))
-// console.log(in_words(99))
-// console.log(in_words(101))
-// console.log(in_words(102))
+console.log(in_words(17))
+console.log(in_words(19))
+console.log(in_words(27))
+console.log(in_words(99))
+console.log(in_words(100))
+console.log(in_words(102))
+console.log(in_words(192))
+console.log(in_words(999))
+console.log(in_words(1000))
+console.log(in_words(1001))
 // console.log(in_words(200))
 // console.log(in_words(38079))
 // console.log(in_words(82102713))
